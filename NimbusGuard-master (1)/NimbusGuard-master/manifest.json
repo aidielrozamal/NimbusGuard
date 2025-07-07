@@ -1,0 +1,66 @@
+{
+  "manifest_version": 3,
+  "name": "NimbusGuard - Enhanced Privacy Protection",
+  "version": "2.0.0",
+  "description": "Advanced ad blocker, tracker protection, and privacy enhancement extension with HTTPS enforcement and comprehensive security features.",
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "storage",
+    "cookies",
+    "tabs",
+    "activeTab",
+    "webRequest",
+    "webRequestBlocking",
+    "privacy",
+    "contextMenus",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "NimbusGuard - Privacy Protection",
+    "default_icon": {
+      "16": "icons/NimbusGuard.png",
+      "48": "icons/NimbusGuard.png",
+      "128": "icons/NimbusGuard.png"
+    }
+  },
+  "icons": {
+    "16": "icons/NimbusGuard.png",
+    "48": "icons/NimbusGuard.png",
+    "128": "icons/NimbusGuard.png"
+  },
+  "options_page": "options.html",
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*.png"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; base-uri 'self';"
+  }
+}

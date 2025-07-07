@@ -1,0 +1,187 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*doubleclick.net/*",
+      "resourceTypes": ["main_frame", "sub_frame", "script", "image", "xmlhttprequest"]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*googleadservices.com/*",
+      "resourceTypes": ["main_frame", "sub_frame", "script", "image", "xmlhttprequest"]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*googlesyndication.com/*",
+      "resourceTypes": ["main_frame", "sub_frame", "script", "image", "xmlhttprequest"]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*amazon-adsystem.com/*",
+      "resourceTypes": ["main_frame", "sub_frame", "script", "image", "xmlhttprequest"]
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*adnxs.com/*",
+      "resourceTypes": ["main_frame", "sub_frame", "script", "image", "xmlhttprequest"]
+    }
+  },
+  {
+    "id": 6,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*ads.yahoo.com/*",
+      "resourceTypes": ["main_frame", "sub_frame", "script", "image", "xmlhttprequest"]
+    }
+  },
+  {
+    "id": 7,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*outbrain.com/*",
+      "resourceTypes": ["main_frame", "sub_frame", "script", "image", "xmlhttprequest"]
+    }
+  },
+  {
+    "id": 8,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*taboola.com/*",
+      "resourceTypes": ["main_frame", "sub_frame", "script", "image", "xmlhttprequest"]
+    }
+  },
+  {
+    "id": 9,
+    "priority": 2,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*google-analytics.com/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image"]
+    }
+  },
+  {
+    "id": 10,
+    "priority": 2,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*googletagmanager.com/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image"]
+    }
+  },
+  {
+    "id": 11,
+    "priority": 2,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*facebook.com/tr/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image"]
+    }
+  },
+  {
+    "id": 12,
+    "priority": 2,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*twitter.com/i/adsct*",
+      "resourceTypes": ["script", "xmlhttprequest", "image"]
+    }
+  },
+  {
+    "id": 13,
+    "priority": 2,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*linkedin.com/li/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image"]
+    }
+  },
+  {
+    "id": 14,
+    "priority": 2,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*hotjar.com/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image"]
+    }
+  },
+  {
+    "id": 15,
+    "priority": 2,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*mixpanel.com/*",
+      "resourceTypes": ["script", "xmlhttprequest", "image"]
+    }
+  },
+  {
+    "id": 16,
+    "priority": 3,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^http://(.*)$",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 17,
+    "priority": 4,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*fingerprint*",
+      "resourceTypes": ["script", "xmlhttprequest"]
+    }
+  },
+  {
+    "id": 18,
+    "priority": 4,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*tracking*",
+      "resourceTypes": ["script", "xmlhttprequest"]
+    }
+  },
+  {
+    "id": 19,
+    "priority": 4,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*beacon*",
+      "resourceTypes": ["script", "xmlhttprequest"]
+    }
+  },
+  {
+    "id": 20,
+    "priority": 4,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*://*analytics*",
+      "resourceTypes": ["script", "xmlhttprequest"]
+    }
+  }
+]

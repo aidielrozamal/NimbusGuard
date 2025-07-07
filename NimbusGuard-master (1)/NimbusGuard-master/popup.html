@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nimbus Guard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      width: 320px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    #logo {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      opacity: 0.9;
+      margin-top: 5px;
+    }
+
+    .feature-container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 12px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .feature-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      display: flex;
+      align-items: center;
+    }
+
+    .feature-icon {
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 48px;
+      height: 24px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    input:checked + .slider {
+      background-color: #4CAF50;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(24px);
+    }
+
+    .stats-container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 12px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .stats-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #333;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .stat-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: #4CAF50;
+    }
+
+    .website-status {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 12px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .website-info {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .allowlist-controls {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: #007bff;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #0056b3;
+    }
+
+    .btn-secondary {
+      background: #6c757d;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #545b62;
+    }
+
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #c82333;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 11px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img id="logo" src="/icons/NimbusGuard.png" alt="Nimbus Guard Logo" />
+    <h1>Nimbus Guard</h1>
+    <div class="subtitle">Privacy & Ad Blocking</div>
+  </div>
+
+  <div class="feature-container">
+    <div class="feature-row">
+      <div class="feature-label">
+        <span class="feature-icon">🛡️</span>
+        Ad Blocker
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggleAdBlocker">
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <div class="feature-row">
+      <div class="feature-label">
+        <span class="feature-icon">🔒</span>
+        HTTPS Enforcement
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggleHTTPS">
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <div class="feature-row">
+      <div class="feature-label">
+        <span class="feature-icon">🎯</span>
+        Tracker Blocking
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggleTrackerBlock">
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <div class="feature-row">
+      <div class="feature-label">
+        <span class="feature-icon">🥷</span>
+        Privacy Mode
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="togglePrivacyMode">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="stats-container">
+    <div class="stats-title">📊 Statistics</div>
+    <div class="stat-row">
+      <span class="stat-label">Ads Blocked:</span>
+      <span class="stat-value" id="adsBlocked">0</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">Trackers Blocked:</span>
+      <span class="stat-value" id="trackersBlocked">0</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">HTTPS Redirects:</span>
+      <span class="stat-value" id="httpsRedirects">0</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">
+        <button class="btn btn-secondary" id="resetStats">Reset Stats</button>
+      </span>
+    </div>
+  </div>
+
+  <div class="website-status">
+    <div class="website-info" id="urlDisplay">Current Website: Loading...</div>
+    <div class="allowlist-controls">
+      <button class="btn btn-primary" id="allowSite">Allow Site</button>
+      <button class="btn btn-danger" id="blockSite">Block Site</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-links">
+      <a href="#" id="openOptions">Options</a>
+      <a href="#" id="reportIssue">Report Issue</a>
+      <a href="#" id="privacyPolicy">Privacy</a>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
